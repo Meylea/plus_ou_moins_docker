@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href={{ url_for('static', filename='styles/style.css') }} />
+</head>
+<body>
+<header>
+    <h1>Jeu du plus ou moins</h1>
+</header>
+<div id="game">
+    {% if game_ended %}
+        <form action="/" method="POST">
+                <p>Indiquez votre nom pour sauvegarder votre score ou cliquez sur rejouer<p>
+                <input type="text" id="name" name="name" autofocus>
+                <input type="submit" class="btn btn-primary">
+                <a href="/" class="btn btn-primary">Rejouer</a>
+        </form>
+    {% else %}
+        <form action="/" method="POST">
+                <p>Donnez un nombre entre 1 et 100<p>
+                <input type="text" id="tried_number" name="tried_number" autofocus>
+                <input type="submit" class="btn btn-primary">
+        </form>
+        {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+        {% if message %}<div id="result" class="alert alert-info"><p>{{ message }}</p></div>{% endif %}
+    {% endif %}
+
+    {% if answers %}
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Réponse</th>
+                    <th scope="col">Résultat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for answer in answers %}
+                <tr><td>{{ answer['tried_number'] }}</td><td>{{ answer['result'] }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>

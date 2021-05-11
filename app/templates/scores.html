@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href={{ url_for('static', filename='styles/style.css') }} />
+</head>
+<body>
+<header>
+    <h1>Jeu du plus ou moins</h1>
+</header>
+<div id="game">
+    <a href="/" class="btn btn-primary btn-replay">Rejouer</a>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Nombre d'essais</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for score in scores %}
+                <tr><td>{{ score['name'] }}</td><td>{{ score['score'] }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

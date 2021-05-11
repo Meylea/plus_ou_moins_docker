@@ -1,0 +1,33 @@
+#answer
+{
+    width: 100px;
+}
+
+body
+{
+    background-color: #C5E9F2;
+    font-family: 'Roboto', sans-serif;
+}
+
+header
+{
+    background-color: #7FDAF1;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+h1
+{
+    font-family: 'Lobster', cursive;
+}
+
+table
+{
+    background-color: white;
+}
+
+.btn-replay
+{
+    margin: 10px;
+}
